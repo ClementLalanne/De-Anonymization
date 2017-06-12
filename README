@@ -1,0 +1,15 @@
+                        De-Anonymization Simulator
+
+This project seek for providing a simulator for the De-Anonymmization problem.
+
+Files description :
+  -primary_graph.ml provides a basic imperative implementation of non orientes
+  labelled graphs with some other generic functions usefull to the
+  de-anonymization problem.
+  -perm.ml provides an implementation of permutations of [0 ... n-1] with some
+  functions.
+  -ER_graph.ml is an Erdos-Renyi graph generator.
+  -conf_graph.ml is a graph generator for the configuration model.
+  -PA_graph.ml is a graph generator for the preferencial attachment model.
+  -FPS.ml allows to simulate a random variable that takes values in [0 ... n-1]
+  with a given probability.
