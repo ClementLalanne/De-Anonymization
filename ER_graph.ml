@@ -1,5 +1,6 @@
 open Primary_graph
 open Random
+open FPS
 
 let generator n p =
   (*Generates a Erdos-Renyi graph in G(n,p)*)
