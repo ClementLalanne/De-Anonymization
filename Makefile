@@ -1,5 +1,5 @@
 main:
-	ocamlc unix.cma graphics.cma FPS.ml perm.ml primary_graph.ml C_graph.ml PA_graph.ml ER_graph.ml main.ml
+	ocamlbuild -libs unix,graphics main.byte
 
 git:
 	git status
@@ -13,10 +13,11 @@ git:
 	git add primary_graph.ml
 	git add README
 	git commit -m "bug fixed"
-	git push C_graph.ml master
+	git push *.ml master
 
 clean:
-	rm *.cmi *.cmo a.out
+	rm _build/*
+	rmdir _build
 
 realclean: clean
 	rm -f *~
