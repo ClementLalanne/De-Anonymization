@@ -1,10 +1,9 @@
                         De-Anonymization Simulator
 
 This project seek for providing a simulator for the De-Anonymmization problem.
-To provide a good name managing i extensively use functors which is in a sense
-close to the work that have been made on the Ocamlgraph library.
 
 Files description :
+  -Makefile automates the compilation.
   -primary_graph.ml provides a basic imperative implementation of non orientes
   labelled graphs with some other generic functions usefull to the
   de-anonymization problem.
@@ -15,3 +14,10 @@ Files description :
   -PA_graph.ml is a graph generator for the preferencial attachment model.
   -FPS.ml allows to simulate a random variable that takes values in [0 ... n-1]
   with a given probability.
+  -Pedarsani_Grossglauser.ml is an attack based on the article of Pedram
+  Pedarsani and Matthias Grossglauser "On the Privacy of Anonymized Networks"
+  -Korula_Lattanzi.ml is an attack based on the article of Nitish Korula and
+  Silvio Lattanzi "An efficient reconciliation algorithm for social networks"
+  -Blackstrom_Dwork_Kleinberg.ml is an attack based on the article of Lars
+  Backstrom Cynthia Dwork and Jon Kleinberg "Wherefore Art Thou R35579X?
+  Anonymized Social Networks, Hidden Paterns, and Structural Steganography"
