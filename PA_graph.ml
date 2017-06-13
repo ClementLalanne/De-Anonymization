@@ -25,6 +25,7 @@ module PA_graph(Graph : G)= struct
         let v = FPS.run ep in
         incr sumd;
         Graph.add_edge g i v;
+        degrees.(v) <- degrees.(v) +1
       done;
     done;
     g

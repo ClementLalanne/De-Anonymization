@@ -59,7 +59,6 @@ module Graph : G = struct
       let y = Random.int 400 in
       pos.(k) <- (x,y);
     done;
-    Graphics.open_graph "600x400 ";
     for k = 0 to n-1 do
       let rec aux l = match l with
         |[] -> ()
