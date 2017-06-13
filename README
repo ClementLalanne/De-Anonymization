@@ -1,6 +1,8 @@
                         De-Anonymization Simulator
 
 This project seek for providing a simulator for the De-Anonymmization problem.
+To provide a good name managing i extensively use functors which is in a sense
+close to the work that have been made on the Ocamlgraph library.
 
 Files description :
   -primary_graph.ml provides a basic imperative implementation of non orientes
