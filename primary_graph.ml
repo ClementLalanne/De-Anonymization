@@ -146,7 +146,7 @@ module Graph : G = struct
       let s1 = ref IS.empty in
       let s2 = ref IS.empty in
       List.iter (fun x -> s1 := IS.add x !s1) g1.adj.(k);
-      List.iter (fun x -> s2 := IS.add x !s2) g1.adj.(k);
+      List.iter (fun x -> s2 := IS.add x !s2) g2.adj.(k);
       counter :=
         !counter +
         (IS.cardinal (IS.diff !s1 !s2)) +

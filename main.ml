@@ -21,12 +21,14 @@ let positions n =
 
 
 let l =
-  Graphics.open_graph " 600x400";
   let module ER = ER_graph(Graph) in
-  let g = ER.generator 30 0.1 in
-  let g1, g2 = Graph.spliter g 0.5 0.3 in
-  let p = positions 100 in
-  Graph.assisted_printer g1 p Graphics.red Graphics.blue;
-  Unix.sleep 10;
-  Graph.assisted_printer g2 p Graphics.red Graphics.green;
-  Unix.sleep 10
+  let g = ER.generator 10 0.3 in
+  let g1, g2 = Graph.spliter g 0.8 0.3 in
+  print_int (Graph.compare g1 g2);
+  print_newline ();
+  let module A = PG_attack(Graph) (Perm) in
+  let x = A.minimize g1 g2 in
+  x ;;
+
+print_int (fst l) ;;
+print_endline ""
