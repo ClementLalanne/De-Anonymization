@@ -13,7 +13,7 @@ git:
 	git add primary_graph.ml
 	git add README
 	git commit -m "bug fixed"
-	git push C_graph master
+	git push C_graph.ml master
 
 clean:
 	rm *.cmi *.cmo a.out
