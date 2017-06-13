@@ -5,7 +5,9 @@ module type P = sig
   val inverse : t -> t
   val next : t -> t
   val identity : int -> t
+  val max : int -> t
   val equal : t -> t -> bool
+  val compare : t -> t -> int
 end
 
 module Perm: P = struct
@@ -36,6 +38,13 @@ module Perm: P = struct
     let i = Array.make (n) 0 in
     for k = 0 to (n-1) do
       i.(k) <- k
+    done;
+    i
+
+  let max n =
+    let i = Array.make n 0 in
+    for k = 0 to n-1 do
+      i.(k) <- n-1-k
     done;
     i
 
@@ -81,4 +90,14 @@ module Perm: P = struct
       end
     else
       false
+
+  let compare p1 p2 =
+    let n = Array.length p1 in
+    assert (n = (Array.length p2));
+    let c = ref 0 in
+    for k = 0 to n-1 do
+      if p1.(k) <> p2.(k) then
+        incr c;
+    done;
+    !c
 end
