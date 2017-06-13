@@ -4,7 +4,7 @@ open FPS
 
 module ER_graph(Graph : G) = struct
   let generator n p =
-    (*Generates a Erdos-Renyi graph in G(n,p)*)
+    (*Generates a random Erdos-Renyi graph in G(n,p)*)
     Random.self_init ();
     let g = Graph.create n in
     for i = 0 to (n-1) do

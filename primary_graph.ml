@@ -19,8 +19,8 @@ module type G = sig
     Graphics.color ->
     Graphics.color ->
     unit
-  val map : t -> ( (int * label) -> (int * label)) -> t
-  val iter : t -> ( (int * label) -> unit ) -> unit
+  val map : ((int * label) -> (int * label)) -> t -> t
+  val iter : ( (int * label) -> unit ) -> t -> unit
   val compare : t -> t -> int
 end
 
@@ -115,7 +115,7 @@ module Graph : G = struct
       aux g.adj.(k)
     done
 
-  let map g f =
+  let map f g =
     let n = size g in
     let gp = create n in
     for k = 0 to n-1 do
@@ -126,7 +126,7 @@ module Graph : G = struct
     done;
     gp
 
-  let iter g f =
+  let iter f g =
     let n = size g in
     for k = 0 to n-1 do
       List.iter (fun x -> f (x, g.labels.(x))) g.adj.(k)
