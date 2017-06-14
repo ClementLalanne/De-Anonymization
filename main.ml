@@ -8,6 +8,7 @@ open Graphics
 open Pedarsani_Grossglauser
 open Korula_Lattanzi
 open Blackstrom_Dwork_Kleinberg
+open Seed
 
 let positions n =
   let v = Array.make n (0, 0) in

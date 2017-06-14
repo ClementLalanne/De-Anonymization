@@ -22,6 +22,7 @@ module type G = sig
   val map : ((int * label) -> (int * label)) -> t -> t
   val iter : ( (int * label) -> unit ) -> t -> unit
   val compare : t -> t -> int
+  val degree : t -> int -> int
 end
 
 module Graph : G = struct
@@ -154,5 +155,5 @@ module Graph : G = struct
     done;
     !counter
 
-
+  let degree g i = List.length (g.adj.(i))
 end
