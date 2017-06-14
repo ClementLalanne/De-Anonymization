@@ -8,6 +8,8 @@ module type P = sig
   val max : int -> t
   val equal : t -> t -> bool
   val compare : t -> t -> int
+  val of_array : int array -> t
+  val to_array : t -> int array
 end
 
 module Perm: P = struct
@@ -100,4 +102,9 @@ module Perm: P = struct
         incr c;
     done;
     !c
+
+  let of_array t = Array.copy t
+
+  let to_array p = Array.copy p
+
 end

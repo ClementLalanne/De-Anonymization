@@ -1,6 +1,6 @@
                         De-Anonymization Simulator
 
-This project seek for providing a simulator for the De-Anonymmization problem.
+This project seek for providing a simulator for the De-Anonymization problem.
 
 Files description :
   -Makefile automates the compilation.
