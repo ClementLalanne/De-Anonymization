@@ -1,11 +1,13 @@
 module type S = sig
   type t
-  type value
   type return
   val is_matched : t -> int -> bool
+  val is_image : t -> int -> bool
   val assoc : t -> int -> return
   val int_of_return : return -> int
-  val add : t -> int -> value -> t
+  val add : t -> int -> int -> t
+  val empty : unit -> t
+  val iter : (int -> int -> unit) -> t -> unit
 end
 
 module Seed: S = struct
@@ -17,13 +19,13 @@ module Seed: S = struct
 
   type t = int M.t
 
-  type value = int
-
   type return =
     |None
     |Some of int
 
   let is_matched s k = M.mem k s
+
+  let is_image s k = M.exists (fun x y -> y = k) s
 
   let assoc s k =
     try
@@ -38,4 +40,7 @@ module Seed: S = struct
 
   let add s i v = M.add i v s
 
+  let empty () = M.empty
+
+  let iter f s = M.iter f s
 end

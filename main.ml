@@ -23,13 +23,22 @@ let positions n =
 
 let l =
   let module ER = ER_graph(Graph) in
-  let g = ER.generator 10 0.3 in
-  let g1, g2 = Graph.spliter g 0.8 0.3 in
-  print_int (Graph.compare g1 g2);
-  print_newline ();
-  let module A = PG_attack(Graph) (Perm) in
-  let x = A.minimize g1 g2 in
-  x ;;
-
-print_int (fst l) ;;
-print_endline ""
+  let n = 200 in
+  let g = ER.generator n 0.2 in
+  let g1, g2 = Graph.spliter g 0.5 0.5 in
+  let module A = KL_attack(Graph) (Seed) in
+  Random.self_init ();
+  let s = ref (Seed.empty ())in
+  for k = 0 to (n)-1 do
+    let r = Random.float 1. in
+    if r < 0.2 then
+      begin
+        s := Seed.add !s k k
+      end
+  done;
+  s := A.attack g1 g2 !s 3 n;
+  Seed.iter (fun i j -> print_int i ;
+              print_string" -> " ;
+              print_int j;
+              print_newline ()) !s ;
+  ()
