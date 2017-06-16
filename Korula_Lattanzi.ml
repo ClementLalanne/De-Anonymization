@@ -33,7 +33,7 @@ module KL_attack(Graph: G) (Seed: S) = struct
             let sw = ref t in
             let l = ref [] in
             for v1 = 0 to (Graph.size g1)-1 do
-              for v2 = 0 to (Graph.size g2)-1 do
+              for v2 = (Graph.size g2)-1 downto 0 do
                 if (not (Seed.is_matched !s v1)) &&
                    (not (Seed.is_image !s v2)) then
                 begin

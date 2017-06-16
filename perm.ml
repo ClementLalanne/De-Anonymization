@@ -1,3 +1,5 @@
+open Primary_graph
+
 module type P = sig
   type t
   val applique : t -> int -> int
@@ -106,5 +108,40 @@ module Perm: P = struct
   let of_array t = Array.copy t
 
   let to_array p = Array.copy p
+
+end
+
+module Random_perm(Perm : P) = struct
+
+  open Random
+
+  let generate n =
+    let a = Array.init n (fun x -> x) in
+    Random.self_init ();
+    let swap t i j =
+      let x = t.(i) in
+      t.(i) <- t.(j);
+      t.(j) <- x
+    in
+    for j = n downto 1 do
+      let k = Random.int j in
+      swap a k (j-1)
+    done;
+    Perm.of_array a
+
+end
+
+module Perm_on_graph(Graph : G) (Perm : P) = struct
+  let applique g p =
+    let n = Graph.size g in
+    let gp = Graph.create n in
+    for k = 0 to n-1 do
+      let l = Graph.neighbours g k in
+      let kp = Perm.applique p k in
+      let lp = List.filter (fun x -> x >= kp)
+          (List.map (Perm.applique p) l) in
+      List.iter (Graph.add_edge gp kp) lp
+    done;
+    gp
 
 end
